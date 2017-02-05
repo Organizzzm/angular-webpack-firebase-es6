@@ -1,0 +1,41 @@
+{
+  "name": "angular-webpack-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-ui-router": "^0.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.0.0-rc.3",
+    "file-loader": "^0.10.0",
+    "html-webpack-plugin": "^2.28.0",
+    "postcss": "^5.2.11",
+    "postcss-import": "^9.1.0",
+    "postcss-loader": "^1.2.2",
+    "precss": "^1.4.0",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  },
+  "scripts": {
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "node node_modules/webpack/bin/webpack.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Organizzzm/angular-webpack-test.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Organizzzm/angular-webpack-test/issues"
+  },
+  "homepage": "https://github.com/Organizzzm/angular-webpack-test#readme"
+}

@@ -1,0 +1,25 @@
+<div class="signup">
+    <form class="form" ng-submit="signup.send(signup.user)">
+        <input
+                class="input"
+                type="text"
+                name="login"
+                placeholder="login"
+                ng-model="signup.user.login"
+                required
+        >
+        <input
+                class="input"
+                type="password"
+                name="pass"
+                placeholder="password"
+                ng-model="signup.user.password"
+                required
+        >
+        <button
+                class="button button--submit"
+                type="submit"
+        >SIGN UP
+        </button>
+    </form>
+</div>
