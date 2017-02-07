@@ -1,11 +1,17 @@
-export default class SignUpController {
-    constructor() {
-        this.author = 'Yang Zhao';
+class SignUpController {
+    constructor($window, $state, Auth) {
+        this.auth = Auth;
+        this.$window = $window;
+        this.$state = $state;
     }
-    send(e){
-        console.log(e);
-        return false;
+
+    send(data) {
+        this.auth.login(data).then(()=> {
+            this.$state.go('list');
+        }, (res) => {
+
+        });
     }
 }
 
-SignUpController.$inject = [];
+export default SignUpController;

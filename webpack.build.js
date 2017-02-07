@@ -6,25 +6,12 @@ var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = {
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
         './app/index.js'
     ],
     output: {
         filename: 'bundle.js',
         path: '/dist',
         publicPath: '/'
-    },
-    devtool: 'eval',
-    devServer: {
-        hot: true,
-        publicPath: '/',
-        historyApiFallback: true,
-        proxy: {
-            '/': {
-                target: 'http://localhost:3000'
-            }
-        }
     },
     module: {
         rules: [
@@ -71,9 +58,7 @@ module.exports = {
         ],
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin(),
-        new ExtractTextPlugin({filename: 'bundle.css', disable: true, allChunks: true}),
+        new ExtractTextPlugin({filename: 'bundle.css', disable: false, allChunks: true}),
         new ngAnnotatePlugin({
             add: true
         })

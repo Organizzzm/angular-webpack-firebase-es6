@@ -5,7 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "angular": "^1.6.1",
-    "angular-ui-router": "^0.4.2"
+    "angular-ui-router": "^0.4.2",
+    "angularfire": "^2.3.0",
+    "express": "^4.14.1",
+    "firebase": "^3.6.8"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -24,9 +27,9 @@
     "webpack-dev-server": "^2.3.0"
   },
   "scripts": {
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "build": "node node_modules/webpack/bin/webpack.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js | node node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "node node_modules/webpack/bin/webpack.js --config webpack.build.js",
+    "serve": "node server/server.js"
   },
   "repository": {
     "type": "git",

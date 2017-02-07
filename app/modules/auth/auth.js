@@ -1,16 +1,10 @@
 class Auth {
-    constructor($http, $q) {
-        this.$http = $http;
-        this.$q = $q;
+    constructor(firebase) {
+        this.firebase = firebase;
     }
 
-    isLogin(){
-        return false;
-    }
-
-    getUser(usreId) {
-        return false;
-        // return this.$http.get('http://jsonplaceholder.typicode.com/users/' + usreId);
+    login(data) {
+        return this.firebase.auth().signInWithEmailAndPassword(data.login, data.password);
     }
 }
 

@@ -1,5 +1,4 @@
 import template from '../view/list.html';
-import resolver from '../../auth/resolver';
 
 export default ($stateProvider) => {
     $stateProvider
@@ -8,6 +7,19 @@ export default ($stateProvider) => {
             template: template,
             controller: 'ListController',
             controllerAs: 'list',
-            resolve: resolver
+            resolve: {
+                auth: ($q, firebase) => {
+                    let deferred = $q.defer();
+
+                    firebase
+                        .auth()
+                        .onAuthStateChanged((user) => {
+                            if (user) deferred.resolve();
+                            else deferred.reject('not authorized');
+                        });
+
+                    return deferred.promise;
+                }
+            }
         })
 }

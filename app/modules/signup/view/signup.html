@@ -1,8 +1,8 @@
 <div class="signup">
-    <form class="form" ng-submit="signup.send(signup.user)">
+    <form class="form" name="signupForm" ng-submit="signup.send(signup.user)">
         <input
                 class="input"
-                type="text"
+                type="email"
                 name="login"
                 placeholder="login"
                 ng-model="signup.user.login"
@@ -19,6 +19,7 @@
         <button
                 class="button button--submit"
                 type="submit"
+                ng-disabled="signupForm.$invalid"
         >SIGN UP
         </button>
     </form>
