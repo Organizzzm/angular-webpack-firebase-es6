@@ -1,26 +1,32 @@
 <div class="signup">
-    <form class="form" name="signupForm" ng-submit="signup.send(signup.user)">
-        <input
-                class="input"
-                type="email"
-                name="login"
-                placeholder="login"
-                ng-model="signup.user.login"
-                required
-        >
-        <input
-                class="input"
-                type="password"
-                name="pass"
-                placeholder="password"
-                ng-model="signup.user.password"
-                required
-        >
-        <button
-                class="button button--submit"
-                type="submit"
-                ng-disabled="signupForm.$invalid"
-        >SIGN UP
-        </button>
+    <form class="signup__form" name="signupForm" ng-submit="signup.send(signup.user)">
+        <div class="signup__row">
+            <input
+                    class="input"
+                    type="email"
+                    name="login"
+                    placeholder="login"
+                    ng-model="signup.user.login"
+                    required
+            >
+        </div>
+        <div class="signup__row">
+            <input
+                    class="input"
+                    type="password"
+                    name="pass"
+                    placeholder="password"
+                    ng-model="signup.user.password"
+                    required
+            >
+        </div>
+        <div class="signup__row">
+            <button
+                    class="signup__btn button button--submit"
+                    type="submit"
+                    ng-disabled="signupForm.$invalid"
+            >SIGN UP
+            </button>
+        </div>
     </form>
 </div>

@@ -1,0 +1,35 @@
+.list{
+  max-width: 922px;
+  margin: 0 auto;
+  padding: 30px 30px 0;
+  &__row {
+    display: flex;
+    margin: 0 -10px 10px;
+  }
+  &__col{
+    width: 33.333333%;
+    padding: 0 10px;
+    &--offset-3{
+      margin-left: 66.666666%;
+    }
+  }
+  &__filter{
+    margin-top: 30px;
+  }
+}
+
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  &__checkbox-col{
+    width: 7%;
+  }
+}
+th,td{
+  border: 1px solid #d2d2d2;
+  padding: 10px 20px;
+}
+
+.add-btn{
+  margin-top: 20px;
+}

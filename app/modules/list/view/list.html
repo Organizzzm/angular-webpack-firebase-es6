@@ -1,3 +1,49 @@
 <div class="list">
-    asfasfasfasf {{ list.author }}
+    <form class="form" name="personalForm" ng-submit="list.send(list.user)">
+        <div class="list__row">
+            <div class="list__col">
+                <input class="input" type="text" name="name" placeholder="Name" ng-model="list.user.name" required>
+            </div>
+            <div class="list__col">
+                <input class="input" type="text" name="last-name" placeholder="Last name" ng-model="list.user.lastName" required>
+            </div>
+            <div class="list__col">
+                <input class="input" type="text" name="position" placeholder="Position" ng-model="list.user.position" required>
+            </div>
+        </div>
+        <div class="list__row">
+            <div class="list__col list__col--offset-3">
+                <button class="button button--submit" type="submit" ng-disabled="personalForm.$invalid">Save</button>
+            </div>
+        </div>
+    </form>
+    <div class="list__row list__filter">
+        <div class="list__col list__col--offset-3">
+            <input class="input" type="text" name="filter" placeholder="Filter">
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="table__checkbox-col"></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Position</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="persona in list.personal">
+            <td><input type="checkbox" ng-model="persona.checked"></td>
+            <td>{{persona.name}}</td>
+            <td>{{persona.lastName}}</td>
+            <td>{{persona.position}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="list__row table__button">
+        <div class="list__col list__col--offset-3">
+            <button class="button button--submit add-btn" type="submit" name="last-name">Delete</button>
+        </div>
+    </div>
 </div>
