@@ -33,17 +33,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="persona in list.personal">
+        <tr ng-repeat="(key, persona) in list.personal">
             <td><input type="checkbox" ng-model="persona.checked"></td>
-            <td>{{persona.name}}</td>
-            <td>{{persona.lastName}}</td>
-            <td>{{persona.position}}</td>
+            <td contenteditable ng-blur="list.updateData(key)">{{persona.name}}</td>
+            <td contenteditable ng-blur="list.updateData(key)">{{persona.lastName}}</td>
+            <td contenteditable ng-blur="list.updateData(key)">{{persona.position}}</td>
         </tr>
         </tbody>
     </table>
     <div class="list__row table__button">
         <div class="list__col list__col--offset-3">
-            <button class="button button--submit add-btn" type="submit" name="last-name">Delete</button>
+            <button class="button button--submit add-btn" type="button" name="last-name" ng-click="list.deleteData()">Delete</button>
         </div>
     </div>
 </div>

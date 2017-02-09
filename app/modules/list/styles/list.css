@@ -30,6 +30,10 @@ th,td{
   padding: 10px 20px;
 }
 
+th{
+  width: 30%;
+}
+
 .add-btn{
   margin-top: 20px;
 }

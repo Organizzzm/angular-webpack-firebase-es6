@@ -1,6 +1,5 @@
 export default class ListController {
-    constructor($scope, firebase, tableService) {
-        this.firebase = firebase;
+    constructor($scope, tableService) {
         this.$scope = $scope;
         this.user = {};
         this.tableService = tableService;
@@ -14,11 +13,7 @@ export default class ListController {
             this.$scope.personalForm.$setUntouched();
             this.user = {};
 
-            this.personal[res] = {
-                name: data.name,
-                lastName: data.lastName,
-                position: data.position
-            }
+            this.personal[res] = data;
         });
     }
 
@@ -26,6 +21,20 @@ export default class ListController {
         this.tableService.get().then((res) => {
             this.personal = res;
         })
+    }
 
+    deleteData() {
+        const personal = this.personal;
+
+        for (let i in personal) {
+            if (personal[i].checked) {
+                this.tableService.remove(i);
+                delete personal[i];
+            }
+        }
+    }
+
+    updateData(key){
+        this.tableService.update(key, this.personal[key]);
     }
 }
