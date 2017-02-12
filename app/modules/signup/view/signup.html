@@ -1,11 +1,11 @@
 <div class="signup">
-    <form class="signup__form" name="signupForm" ng-submit="signup.send(signup.user)">
+    <form class="signup__form" name="signupForm">
         <div class="signup__row">
             <input
                     class="input"
                     type="email"
                     name="login"
-                    placeholder="login"
+                    placeholder="Email"
                     ng-model="signup.user.login"
                     required
             >
@@ -15,7 +15,7 @@
                     class="input"
                     type="password"
                     name="pass"
-                    placeholder="password"
+                    placeholder="Password"
                     ng-model="signup.user.password"
                     required
             >
@@ -25,6 +25,7 @@
                     class="signup__btn button button--submit"
                     type="submit"
                     ng-disabled="signupForm.$invalid"
+                    ng-click="signup.send(signup.user, signupForm)"
             >SIGN UP
             </button>
         </div>

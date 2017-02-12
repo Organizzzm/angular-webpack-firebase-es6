@@ -3,17 +3,22 @@ export default class ListController {
         this.$scope = $scope;
         this.user = {};
         this.tableService = tableService;
-        this.personal = {};
+        this.personal = [];
+        this.sortType = 'time';
+        this.sortReverse = true;
+        this.abpattern = /^[A-z]+$/;
+        this.filter = '';
 
         this.getData();
     }
 
-    send(data) {
+    addNew(data) {
         this.tableService.save(data).then((res)=> {
             this.$scope.personalForm.$setUntouched();
             this.user = {};
 
-            this.personal[res] = data;
+            data.key = res;
+            this.personal.push(data);
         });
     }
 
@@ -26,15 +31,20 @@ export default class ListController {
     deleteData() {
         const personal = this.personal;
 
-        for (let i in personal) {
-            if (personal[i].checked) {
-                this.tableService.remove(i);
-                delete personal[i];
+        personal.forEach((item)=> {
+            if (item.checked) {
+                this.tableService.remove(item.key);
             }
-        }
+        });
+
+        this.getData();
     }
 
-    updateData(key){
-        this.tableService.update(key, this.personal[key]);
+    updateData(persona) {
+        this.tableService.update(persona);
+    }
+
+    getFilteredData(){
+        console.log(this.filter)
     }
 }

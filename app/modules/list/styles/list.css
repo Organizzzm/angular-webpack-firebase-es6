@@ -32,6 +32,7 @@ th,td{
 
 th{
   width: 30%;
+  cursor: pointer;
 }
 
 .add-btn{

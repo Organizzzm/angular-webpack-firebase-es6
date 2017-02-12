@@ -1,11 +1,11 @@
 <div class="list">
-    <form class="form" name="personalForm" ng-submit="list.send(list.user)">
+    <form class="form" name="personalForm" ng-submit="list.addNew(list.user)">
         <div class="list__row">
             <div class="list__col">
-                <input class="input" type="text" name="name" placeholder="Name" ng-model="list.user.name" required>
+                <input class="input" type="text" name="name" placeholder="Name" ng-model="list.user.name" ng-pattern="list.abpattern" required>
             </div>
             <div class="list__col">
-                <input class="input" type="text" name="last-name" placeholder="Last name" ng-model="list.user.lastName" required>
+                <input class="input" type="text" name="last-name" placeholder="Last name" ng-model="list.user.lastName" ng-pattern="list.abpattern" required>
             </div>
             <div class="list__col">
                 <input class="input" type="text" name="position" placeholder="Position" ng-model="list.user.position" required>
@@ -19,7 +19,7 @@
     </form>
     <div class="list__row list__filter">
         <div class="list__col list__col--offset-3">
-            <input class="input" type="text" name="filter" placeholder="Filter">
+            <input class="input" type="text" name="filter" filter="list.getFilteredData()" ng-model="list.filter" placeholder="Filter">
         </div>
     </div>
 
@@ -27,17 +27,17 @@
         <thead>
         <tr>
             <th class="table__checkbox-col"></th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Position</th>
+            <th ng-click="list.sortType = 'name'; list.sortReverse = !list.sortReverse">First Name</th>
+            <th ng-click="list.sortType = 'lastName'; list.sortReverse = !list.sortReverse">Last Name</th>
+            <th ng-click="list.sortType = 'position'; list.sortReverse = !list.sortReverse">Position</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="(key, persona) in list.personal">
+        <tr ng-repeat="persona in list.personal | orderBy:list.sortType:list.sortReverse | filter: list.filter track by $index">
             <td><input type="checkbox" ng-model="persona.checked"></td>
-            <td contenteditable ng-blur="list.updateData(key)">{{persona.name}}</td>
-            <td contenteditable ng-blur="list.updateData(key)">{{persona.lastName}}</td>
-            <td contenteditable ng-blur="list.updateData(key)">{{persona.position}}</td>
+            <td edit="list.updateData(persona)" ng-model="persona.name">{{persona.name}}</td>
+            <td edit="list.updateData(persona)" ng-model="persona.lastName">{{persona.lastName}}</td>
+            <td edit="list.updateData(persona)" ng-model="persona.position">{{persona.position}}</td>
         </tr>
         </tbody>
     </table>

@@ -12,7 +12,8 @@ class tableService {
             .push({
                 'name': data.name,
                 'lastName': data.lastName,
-                'position': data.position
+                'position': data.position,
+                'time': Date.now()
             }).then((res)=> {
 
             deferred.resolve(res.key);
@@ -27,7 +28,15 @@ class tableService {
         this.firebase.database()
             .ref('personal/')
             .on('value', (res) => {
-                deferred.resolve(res.val());
+                let arr = [],
+                    values = res.val();
+
+                for (let i in values) {
+                    values[i].key = i;
+                    arr.push(values[i])
+                }
+
+                deferred.resolve(arr);
             });
 
         return deferred.promise;
@@ -40,12 +49,13 @@ class tableService {
             .remove();
     }
 
-    update(key, data) {
-        console.log(data);
+    update(persona) {
+        const key = persona.key;
+
         this.firebase.database()
             .ref('personal')
             .child(key)
-            .update(data);
+            .update(persona);
     }
 }
 
