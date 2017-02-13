@@ -1,4 +1,6 @@
 export default ($parse) => {
+    "ngInject";
+
     return {
         restrict: "A",
         link: (scope, element, attr) => {

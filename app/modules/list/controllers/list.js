@@ -1,5 +1,7 @@
 export default class ListController {
     constructor($scope, tableService) {
+        "ngInject";
+
         this.$scope = $scope;
         this.user = {};
         this.tableService = tableService;

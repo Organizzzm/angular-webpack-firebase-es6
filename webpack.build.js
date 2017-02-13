@@ -2,7 +2,10 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
-var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: [
@@ -26,7 +29,7 @@ module.exports = {
                 test: /\.js$/,
                 use: [
                     {
-                        loader: 'babel-loader',
+                        loader: 'babel-loader?optional=runtime&stage=0&cacheDirectory',
                         options: {}
                     }
                 ],
@@ -59,8 +62,17 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin({filename: 'bundle.css', disable: false, allChunks: true}),
+        new OptimizeCssAssetsPlugin(),
         new ngAnnotatePlugin({
             add: true
+        }),
+        new UglifyJSPlugin(),
+        new CompressionPlugin({
+            asset: "[path].gz[query]",
+            algorithm: "gzip",
+            test: /\.js$|\.html$|\.css$/,
+            threshold: 10240,
+            minRatio: 0.8
         })
     ]
 };

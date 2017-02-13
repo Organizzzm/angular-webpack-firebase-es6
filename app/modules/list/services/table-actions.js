@@ -1,5 +1,7 @@
 class tableService {
     constructor($q, firebase) {
+        "ngInject";
+
         this.firebase = firebase;
         this.$q = $q;
     }

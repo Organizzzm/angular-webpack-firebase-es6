@@ -1,4 +1,6 @@
 export default ($http) => {
+    "ngInject";
+
     return {
         require: 'ngModel',
         link: function (scope, ele, attrs, c) {

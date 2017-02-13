@@ -1,6 +1,8 @@
 import template from '../view/list.html';
 
 export default ($stateProvider) => {
+    "ngInject";
+
     $stateProvider
         .state('list', {
             url: '/',

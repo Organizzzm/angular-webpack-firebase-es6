@@ -1,4 +1,6 @@
 export default ($parse) => {
+    "ngInject";
+
     function debounce(func, wait, immediate) {
         var timeout;
         return function () {
