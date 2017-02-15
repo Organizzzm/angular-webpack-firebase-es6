@@ -10,8 +10,7 @@ app.use(express.static(path.join(rootPath, 'dist')));
 
 
 app.get('*', function (req, res) {
-    res.set("Content-Encoding", "gzip");
-    res.sendFile(path.join(rootPath, 'dist', 'index.html'));
+    res.sendFile(path.join(rootPath, 'server', 'index.html'));
 });
 
 app.listen(3000, function () {
